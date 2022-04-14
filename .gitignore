@@ -8,6 +8,11 @@
 # testing
 /coverage
 
+# content
+/blog/images/*.*
+/blog/posts/*.*
+!/blog/**/.gitkeep
+
 # next.js
 /.next/
 /out/
