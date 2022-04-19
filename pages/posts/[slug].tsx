@@ -1,23 +1,23 @@
-import { getAllSlugs, getPostBySlug } from '@/api/posts';
-import Footer from '@/components/Footer';
-import Head from '@/components/Head';
-import Main from '@/components/Main';
-import type { GetStaticPaths, GetStaticProps } from 'next';
-import React from 'react';
-import Image from 'next/image';
-import { serialize } from 'next-mdx-remote/serialize';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { PostMeta } from '@/types/Post';
-import configuration from '@/config/configuration';
-import MdxEmbeds from '@/components/embeds/MdxEmbeds';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeKatex from 'rehype-katex';
-import rehypeExternalLinks from 'rehype-external-links';
-import rehypeHighlight from 'rehype-highlight';
+import { getAllSlugs, getPostBySlug } from "@/api/posts";
+import Footer from "@/components/Footer";
+import Head from "@/components/Head";
+import Main from "@/components/Main";
+import type { GetStaticPaths, GetStaticProps } from "next";
+import React from "react";
+import Image from "next/image";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { PostMeta } from "@/types/Post";
+import configuration from "@/config/configuration";
+import MdxEmbeds from "@/components/embeds/MdxEmbeds";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeKatex from "rehype-katex";
+import rehypeExternalLinks from "rehype-external-links";
+import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark-dimmed.css";
-import Header from '@/components/Header';
-import { NextSeo } from 'next-seo';
+import Header from "@/components/Header";
+import { NextSeo } from "next-seo";
 
 type PostProps = {
     content: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -44,7 +44,7 @@ function Post(props: {post: PostProps}) {
             </Main>
             <Footer />
         </>
-    )
+    );
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

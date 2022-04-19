@@ -1,11 +1,11 @@
-import configuration from '@/config/configuration';
-import Head from '@/components/Head';
-import getAllPosts from '@/api/posts';
-import Post, { PostMeta }  from '@/types/Post';
-import PostList from '@/components/PostList';
-import Main from '@/components/Main';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
+import configuration from "@/config/configuration";
+import Head from "@/components/Head";
+import getAllPosts from "@/api/posts";
+import Post, { PostMeta }  from "@/types/Post";
+import PostList from "@/components/PostList";
+import Main from "@/components/Main";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 type HomeProps = {
   postsMeta: PostMeta[];

@@ -1,7 +1,7 @@
-import '../styles/globals.scss'
-import type { AppProps } from 'next/app';
-import { DefaultSeo } from 'next-seo';
-import { configuration as config } from '../config/configuration';
+import type { AppProps } from "next/app";
+import { DefaultSeo } from "next-seo";
+import { configuration as config } from "../config/configuration";
+import "../styles/globals.scss";
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -18,7 +18,7 @@ function App({ Component, pageProps }: AppProps) {
           site_name: config.blogName,
         }}
         twitter={{
-          cardType: 'summary_large_image',
+          cardType: "summary_large_image",
         }}
       />
       <Component {...pageProps} />

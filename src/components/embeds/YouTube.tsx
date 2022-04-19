@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function YouTube({ videoId }: { videoId: string }) {
   return (
@@ -9,7 +9,7 @@ function YouTube({ videoId }: { videoId: string }) {
             title={`YouTube video ${videoId}`}
         />
     </div>
-  )
+  );
 }
 
 export default YouTube;

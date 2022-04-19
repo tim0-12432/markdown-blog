@@ -1,7 +1,7 @@
-import { PostMeta } from '@/types/Post';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react'
+import { PostMeta } from "@/types/Post";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 type PostListProps = {
     posts: PostMeta[];

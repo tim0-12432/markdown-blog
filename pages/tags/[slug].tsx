@@ -1,13 +1,13 @@
-import getAllPosts from '@/api/posts';
-import Footer from '@/components/Footer';
-import Head from '@/components/Head';
-import Header from '@/components/Header';
-import Main from '@/components/Main';
-import PostList from '@/components/PostList';
-import configuration from '@/config/configuration';
-import Post, { PostMeta } from '@/types/Post';
-import type { GetStaticPaths, GetStaticProps } from 'next';
-import React from 'react';
+import getAllPosts from "@/api/posts";
+import Footer from "@/components/Footer";
+import Head from "@/components/Head";
+import Header from "@/components/Header";
+import Main from "@/components/Main";
+import PostList from "@/components/PostList";
+import configuration from "@/config/configuration";
+import Post, { PostMeta } from "@/types/Post";
+import type { GetStaticPaths, GetStaticProps } from "next";
+import React from "react";
 
 type TagProps = {
     slug: string;
@@ -26,7 +26,7 @@ function Tag(props: TagProps) {
             </Main>
             <Footer />
         </>
-    )
+    );
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

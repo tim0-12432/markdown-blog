@@ -1,4 +1,4 @@
-import { default as NextHead } from 'next/head';
+import { default as NextHead } from "next/head";
 
 function Head({title}: {title: string}) {
   return (
