@@ -21,6 +21,6 @@ export const configuration: Configuration = {
         host: null,
         port: null
     }
-}
+};
 
 export default configuration;

@@ -9,17 +9,18 @@ type PostListProps = {
 
 function PostList(props: PostListProps) {
   return (
-      <ul>
+      <ul className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-3">
         {
             props.posts.map((post: PostMeta) => (
-                <li key={post.slug}>
+                <li key={post.slug} className="border-2 border-solid border-black rounded-lg">
                     {
                         post.image && (
                             <Image src={post.image} width={200} height={200} alt={`Thumbnail ${post.title}`} />
                         )
                     }
                     <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-                    <p>{post.date}</p>
+                    <p>{ post.date }</p>
+                    <p>{ post.readTime.humanizedDuration }</p>
                     <p>
                         {
                             post.tags.map((tag: string) => (

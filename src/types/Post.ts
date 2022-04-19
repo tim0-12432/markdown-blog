@@ -3,6 +3,13 @@ export type Post = {
     meta: PostMeta;
 }
 
+export type ReadTime = {
+    duration: number;
+    humanizedDuration: string;
+    wordCount: number;
+    imageCount: number;
+}
+
 export type PostMeta = {
     slug: string;
     title: string;
@@ -10,6 +17,7 @@ export type PostMeta = {
     author: string;
     tags: string[];
     image: string | null;
+    readTime: ReadTime;
 }
 
 export default Post;

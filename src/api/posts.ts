@@ -4,6 +4,7 @@ import { sync } from "glob";
 import matter from "gray-matter";
 import Post from "@/types/Post";
 import configuration from "@/config/configuration";
+import readTimeEstimate from "read-time-estimate";
 
 const POSTS_DIR: string = path.join(process.cwd(), "posts");
 const GLOB_PATTERN: string = "posts/*.mdx";
@@ -26,6 +27,7 @@ export function getPostBySlug(slug: string): Post {
     const postPath: string = path.join(POSTS_DIR, `${slug}.mdx`);
     const source: string = fs.readFileSync(postPath, "utf8");
     const { data, content } = matter(source);
+    const readTime = readTimeEstimate(content);
     return {
         content,
         meta: {
@@ -35,6 +37,12 @@ export function getPostBySlug(slug: string): Post {
             author: data.author ?? configuration.blogCopyright,
             tags: data.tags.sort() ?? [],
             image: `/images/${(data.image ?? null).replace(/^\//, "")}`,
+            readTime: {
+                duration: readTime.duration,
+                humanizedDuration: readTime.humanizedDuration,
+                wordCount: readTime.totalWords,
+                imageCount: readTime.totalImages
+            }
         }
     };
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { default as NextImage, ImageProps } from "next/image";
+import { ImageProps, default as NextImage } from "next/image";
 
 function Image({ src, ...props }: ImageProps) {
   return (

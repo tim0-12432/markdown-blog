@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import { configuration as config } from "../config/configuration";
-import "../styles/globals.scss";
+import "tailwindcss/tailwind.css";
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,10 +15,10 @@ function App({ Component, pageProps }: AppProps) {
           title: config.blogName,
           description: config.blogDescription,
           images: [],
-          site_name: config.blogName,
+          site_name: config.blogName
         }}
         twitter={{
-          cardType: "summary_large_image",
+          cardType: "summary_large_image"
         }}
       />
       <Component {...pageProps} />

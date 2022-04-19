@@ -40,6 +40,8 @@ function Post(props: {post: PostProps}) {
                     )
                 }
                 <h1>{ meta.title }</h1>
+                <h2>{ meta.date }</h2>
+                <h2>{ meta.readTime.humanizedDuration }</h2>
                 <MDXRemote {...content} components={MdxEmbeds} lazy />
             </Main>
             <Footer />
