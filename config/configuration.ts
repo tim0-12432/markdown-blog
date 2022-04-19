@@ -1,4 +1,4 @@
-import type Configuration from "./Configuration.t";
+import type Configuration from "@/types/Configuration";
 
 export const configuration: Configuration = {
     blogName: "Example blog",
