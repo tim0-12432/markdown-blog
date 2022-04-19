@@ -9,9 +9,10 @@
 /coverage
 
 # content
-/blog/images/*.*
-/blog/posts/*.*
-!/blog/**/.gitkeep
+/public/images/*.*
+!/public/images/.gitkeep
+/posts/*.*
+!/posts/.gitkeep
 
 # next.js
 /.next/

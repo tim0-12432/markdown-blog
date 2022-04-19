@@ -5,8 +5,8 @@ import matter from "gray-matter";
 import Post from "@/types/Post";
 import configuration from "@/config/configuration";
 
-const POSTS_DIR: string = path.join(process.cwd(), "blog", "posts");
-const GLOB_PATTERN: string = "blog/posts/*.mdx";
+const POSTS_DIR: string = path.join(process.cwd(), "posts");
+const GLOB_PATTERN: string = "posts/*.mdx";
 
 export function getAllPosts() {
     const posts: Post[] = getAllSlugs().map((slug: string) => getPostBySlug(slug));
@@ -34,7 +34,7 @@ export function getPostBySlug(slug: string): Post {
             date: (data.date ?? new Date()).toLocaleDateString(undefined),
             author: data.author ?? configuration.blogCopyright,
             tags: data.tags.sort() ?? [],
-            image: data.image ?? null
+            image: `/images/${(data.image ?? null).replace(/^\//, "")}`,
         }
     };
 }

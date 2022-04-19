@@ -28,15 +28,15 @@ function Post(props: {post: PostProps}) {
     const { content, meta } = props.post;
     return (
         <>
-            <Head title={`${meta.title} - ${configuration.blogName}`} />
             <NextSeo
                 title={meta.title}
             />
+            <Head title={`${meta.title} - ${configuration.blogName}`} />
             <Header />
             <Main>
                 {
                     meta.image && (
-                        <Image src={meta.image} width={200} height={200} alt={`Thumbnail ${meta.title}`} />
+                        <Image priority src={meta.image} width={200} height={200} alt={`Thumbnail ${meta.title}`} />
                     )
                 }
                 <h1>{ meta.title }</h1>
