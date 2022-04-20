@@ -8,13 +8,15 @@ export const configuration: Configuration = {
     colors: {
         dark: {
             primary: "#1c1c1c",
-            secondary: "#2c2c2c",
-            font: "#ffffff"
+            secondary: "#333333",
+            font: "#ffffff",
+            accent: "#009dff"
         },
         light: {
-            primary: "#fafafa",
+            primary: "#dddddd",
             secondary: "#fafafa",
-            font: "#000000"
+            font: "#000000",
+            accent: "#009dff"
         }
     },
     appwriteDatabase: {

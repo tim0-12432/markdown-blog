@@ -18,6 +18,7 @@ import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark-dimmed.css";
 import Header from "@/components/Header";
 import { NextSeo } from "next-seo";
+import styles from "@/styles/Post";
 
 type PostProps = {
     content: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -26,6 +27,14 @@ type PostProps = {
 
 function Post(props: {post: PostProps}) {
     const { content, meta } = props.post;
+    const Overrides: {[name: string]: (params: any) => JSX.Element} = {
+        h1: (params: any) => <h1 {...params} className={styles.h1} />,
+        h2: (params: any) => <h2 {...params} className={styles.h2} />,
+        h3: (params: any) => <h3 {...params} className={styles.h3} />,
+        h4: (params: any) => <h4 {...params} className={styles.h4} />,
+        p: (params: any) => <p {...params} className={styles.p} />,
+        a: (params: any) => <a {...params} className={styles.a} />
+    };
     return (
         <>
             <NextSeo
@@ -39,10 +48,10 @@ function Post(props: {post: PostProps}) {
                         <Image priority src={meta.image} width={200} height={200} alt={`Thumbnail ${meta.title}`} />
                     )
                 }
-                <h1>{ meta.title }</h1>
-                <h2>{ meta.date }</h2>
-                <h2>{ meta.readTime.humanizedDuration }</h2>
-                <MDXRemote {...content} components={MdxEmbeds} lazy />
+                <h1 className={styles.title}>{ meta.title }</h1>
+                <h2 className={styles.date}>{ meta.date }</h2>
+                <h2 className={styles.readTime}>{ meta.readTime.humanizedDuration }</h2>
+                <MDXRemote {...content} components={{ ...MdxEmbeds, ...Overrides }} lazy />
             </Main>
             <Footer />
         </>

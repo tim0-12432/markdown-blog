@@ -12,7 +12,8 @@ export type Configuration = {
 export type Color = {
     primary: string,
     secondary: string,
-    font: string
+    font: string,
+    accent: string
 }
 
 export type Url = {
