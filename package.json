@@ -6,15 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "rss": "npx next-rss"
+    "lint": "next lint"
   },
   "dependencies": {
+    "appwrite": "^7.0.0",
     "glob": "^8.0.1",
     "gray-matter": "^4.0.3",
     "next": "12.1.5",
     "next-mdx-remote": "4.0.1",
-    "next-rss": "^1.0.1",
     "next-seo": "^5.4.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",

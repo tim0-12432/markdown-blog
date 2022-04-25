@@ -11,7 +11,7 @@ type HomeProps = {
   postsMeta: PostMeta[];
 }
 
-export const Home = (props: HomeProps) => {
+export const Home = (props: HomeProps): JSX.Element => {
   const { postsMeta } = props;
   return (
     <>

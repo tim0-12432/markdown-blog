@@ -6,7 +6,10 @@ export type Configuration = {
         dark: Color,
         light: Color
     } | Color,
-    appwriteDatabase: Url | null
+    appwriteDatabase: {
+        url: Url | null,
+        projectId: string | null
+    } | null
 }
 
 export type Color = {

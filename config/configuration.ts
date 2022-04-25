@@ -20,8 +20,8 @@ export const configuration: Configuration = {
         }
     },
     appwriteDatabase: {
-        host: null,
-        port: null
+        url: null,
+        projectId: null
     }
 };
 
