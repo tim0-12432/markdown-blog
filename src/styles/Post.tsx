@@ -31,8 +31,29 @@ export const styles: Styles = {
         text-md`,
     "a": `text-[color:var(--color-accent)]
         cursor-pointer
-        hover:underline`
-
+        hover:underline`,
+    "li": `mt-1
+        text-[color:var(--color-font)]
+        text-md`,
+    "ul": `list-disc
+        pl-4`,
+    "ol": `list-decimal
+        pl-4`,
+    "blockquote": ` border-l-4
+        border-[color:var(--color-primary)]
+        p-4
+        text-[color:var(--color-font)]
+        text-md`,
+    "code": `bg-[#22272d]
+        rounded-md
+        p-1
+        text-[#a7b3c0]`,
+    "pre": `bg-[#22272d]
+        rounded-lg
+        p-3
+        my-4`,
+    "strong": `font-extrabold
+        text-[color:var(--color-font)]`
 };
 
 export default styles;

@@ -13,6 +13,7 @@ function Footer({ config }: { config: Configuration }) {
     } else {
       setDarkMode();
     }
+    document.body.style.backgroundColor = "var(--color-primary)";
   }, []);
 
   const toggleTheme = () => {

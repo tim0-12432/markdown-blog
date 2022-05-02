@@ -34,7 +34,14 @@ function Post(props: {post: PostProps, config: Configuration}) {
         h3: (params: any) => <h3 {...params} className={styles.h3} />,
         h4: (params: any) => <h4 {...params} className={styles.h4} />,
         p: (params: any) => <p {...params} className={styles.p} />,
-        a: (params: any) => <a {...params} className={styles.a} />
+        a: (params: any) => <a {...params} className={styles.a} />,
+        li: (params: any) => <li {...params} className={styles.li} />,
+        ul: (params: any) => <ul {...params} className={styles.ul} />,
+        ol: (params: any) => <ol {...params} className={styles.ol} />,
+        blockquote: (params: any) => <blockquote {...params} className={styles.blockquote} />,
+        code: (params: any) => <code {...params} className={styles.code} />,
+        pre: (params: any) => <pre {...params} className={styles.pre} />,
+        strong: (params: any) => <strong {...params} className={styles.strong} />
     };
     return (
         <>
