@@ -8,7 +8,6 @@ import Image from "next/image";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { PostMeta } from "@/types/Post";
-import configuration from "@/config/configuration";
 import MdxEmbeds from "@/components/embeds/MdxEmbeds";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -19,13 +18,15 @@ import "highlight.js/styles/github-dark-dimmed.css";
 import Header from "@/components/Header";
 import { NextSeo } from "next-seo";
 import styles from "@/styles/Post";
+import getConfig, { getConfigByKey } from "@/configuration/configuration";
+import Configuration from "@/types/Configuration";
 
 type PostProps = {
     content: MDXRemoteSerializeResult<Record<string, unknown>>;
     meta: PostMeta;
 }
 
-function Post(props: {post: PostProps}) {
+function Post(props: {post: PostProps, config: Configuration}) {
     const { content, meta } = props.post;
     const Overrides: {[name: string]: (params: any) => JSX.Element} = {
         h1: (params: any) => <h1 {...params} className={styles.h1} />,
@@ -40,8 +41,8 @@ function Post(props: {post: PostProps}) {
             <NextSeo
                 title={meta.title}
             />
-            <Head title={`${meta.title} - ${configuration.blogName}`} />
-            <Header />
+            <Head title={`${meta.title} - ${props.config.blogName}`} />
+            <Header config={props.config} />
             <Main>
                 {
                     meta.image && (
@@ -53,7 +54,7 @@ function Post(props: {post: PostProps}) {
                 <h2 className={styles.readTime}>{ meta.readTime.humanizedDuration }</h2>
                 <MDXRemote {...content} components={{ ...MdxEmbeds, ...Overrides }} lazy />
             </Main>
-            <Footer />
+            <Footer config={props.config} />
         </>
     );
 }
@@ -74,12 +75,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }
     });
 
+    const config = getConfig();
+
     return {
         props: {
             post: {
                 content: serializedMdx,
                 meta
-            }
+            },
+            config
         }
     };
 };

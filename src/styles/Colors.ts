@@ -1,7 +1,7 @@
-import configuration from "@/config/configuration";
+import { getConfigByKey } from "@/configuration/configuration";
 import { Color } from "@/types/Configuration";
 
-export const colors: {dark: Color, light: Color} | Color = configuration.colors;
+export const colors: {dark: Color, light: Color} | Color = getConfigByKey("colors");
 
 export function getColor(theme: "dark" | "light", color: "primary" | "secondary" | "font" | "accent") {
     switch (theme) {

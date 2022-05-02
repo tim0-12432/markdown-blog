@@ -5,6 +5,7 @@ RUN npm ci
 
 FROM node:lts as builder
 WORKDIR /
+ENV NODE_ENV=production
 COPY . .
 COPY --from=dependencies /node_modules ./node_modules
 RUN npm run build

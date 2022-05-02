@@ -3,18 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "react-env --prefix ENV -- next",
     "build": "next build",
-    "start": "next start",
+    "start": "react-env --prefix ENV -- next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "appwrite": "^7.0.0",
+    "@beam-australia/react-env": "^3.1.1",
     "glob": "^8.0.1",
     "gray-matter": "^4.0.3",
     "next": "12.1.5",
     "next-mdx-remote": "4.0.1",
     "next-seo": "^5.4.0",
+    "node-appwrite": "^5.1.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "read-time-estimate": "^0.0.3",

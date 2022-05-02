@@ -3,14 +3,16 @@ import fs from "fs";
 import { sync } from "glob";
 import matter from "gray-matter";
 import Post from "@/types/Post";
-import configuration from "@/config/configuration";
 import readTimeEstimate from "read-time-estimate";
+import { getAppwritePostSlugs } from "./appwrite";
+import { getConfigByKey } from "@/configuration/configuration";
 
 const POSTS_DIR: string = path.join(process.cwd(), "posts");
 const GLOB_PATTERN: string = "posts/*.mdx";
 
 export function getAllPosts() {
     const posts: Post[] = getAllSlugs().map((slug: string) => getPostBySlug(slug));
+    posts.push(...getAppwritePostSlugs().map((slug: string) => getPostBySlug(slug)));
     return posts.sort((a: Post, b: Post) => {
         if (a.meta.date < b.meta.date) return 1;
         else if (a.meta.date > b.meta.date) return -1;
@@ -34,7 +36,7 @@ export function getPostBySlug(slug: string): Post {
             slug,
             title: data.title ?? slug,
             date: (data.date ?? new Date()).toLocaleDateString(undefined),
-            author: data.author ?? configuration.blogCopyright,
+            author: data.author ?? getConfigByKey("blogCopyright"),
             tags: data.tags.sort() ?? [],
             image: `/images/${(data.image ?? null).replace(/^\//, "")}`,
             readTime: {

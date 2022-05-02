@@ -1,9 +1,10 @@
 import type { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
-import { configuration as config } from "../config/configuration";
 import "tailwindcss/tailwind.css";
+import getConfig from "@/configuration/configuration";
 
 function App({ Component, pageProps }: AppProps) {
+  const config = getConfig();
   return (
     <>
       <DefaultSeo
@@ -24,6 +25,14 @@ function App({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      config: getConfig()
+    }
+  };
 }
 
 export default App;

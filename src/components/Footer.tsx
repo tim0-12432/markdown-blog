@@ -1,9 +1,9 @@
-import configuration from "@/config/configuration";
 import getColor from "@/styles/Colors";
 import styles from "@/styles/Footer";
+import Configuration from "@/types/Configuration";
 import React, { useEffect } from "react";
 
-function Footer() {
+function Footer({ config }: { config: Configuration }) {
 
   useEffect(() => {
     if (localStorage.theme !== "dark"
@@ -45,7 +45,7 @@ function Footer() {
 
   return (
     <footer className={styles.container}>
-      <p className={styles.text}>&copy; {configuration.blogCopyright} | v{process.env.NEXT_PUBLIC_APP_VERSION}</p>
+      <p className={styles.text}>&copy; {config.blogCopyright} | v{process.env.NEXT_PUBLIC_APP_VERSION}</p>
       <button className={styles.themeBtn} onClick={toggleTheme}>Toggle Theme</button>
     </footer>
   );
