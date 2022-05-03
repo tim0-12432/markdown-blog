@@ -12,11 +12,10 @@ If you are planning to add posts via the [Appwrite Database](https://github.com/
 
 ### Configuration
 
-1. `configuration.json` in `config`
+1. [`configuration.json`](config/configuration.json) in `config`
    - Example AppwriteDB
 
 ```json
-    ...
     "appwriteDatabase": {
         "url": {
             "host": "localhost",
@@ -24,8 +23,7 @@ If you are planning to add posts via the [Appwrite Database](https://github.com/
         },
         "projectId": "YOUR_PROJECT_ID",
         "postBucketId": "YOUR_POST_BUCKET_ID"
-    },
-    ...
+    }
 ```
 
 2. Environment variables `.env` or Docker `-e`
@@ -53,16 +51,16 @@ All [Configuration keys](src/types/Configuration.ts):
 ### Docker
 
 - **Volumes**:
-  - `config`: for accessing the configuration file
-  - `posts`: when wanting to add posts via file explorer
-  - `public/images`: when wanting to add images
+  - [`config`](config/): for accessing the configuration file
+  - [`posts`](posts/): when wanting to add posts via file explorer
+  - [`public/images`](public/images/): when wanting to add images
 - **Ports**:
   - `3000`: for displaying NextJS frontend
 
 ### NodeJS
 
 1. Clone the [repository](https://github.com/tim0-12432/markdown-blog)
-2. Install the dependencies via `npm install`
+2. Install the dependencies via [`npm install`](package.json)
 3. Build the application via `npm run build`
 4. Run the server via `npm run start`
 

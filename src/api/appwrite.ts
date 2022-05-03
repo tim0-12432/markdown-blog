@@ -21,7 +21,9 @@ function isAppwriteConfigured(): boolean {
             && config.url.host !== ""
             && config.url.port !== ""
             && config.projectId !== null
-            && config.projectId !== "";
+            && config.projectId !== ""
+            && config.postBucketId !== null
+            && config.postBucketId !== "";
 }
 
 export function getAppwritePostSlugs(): string[] {
