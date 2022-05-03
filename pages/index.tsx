@@ -28,7 +28,7 @@ export const Home = (props: HomeProps): JSX.Element => {
 };
 
 export async function getStaticProps() {
-  const postsMeta: PostMeta[] = getAllPosts()
+  const postsMeta: PostMeta[] = (await getAllPosts())
       .slice(0, 9)
       .map((post: Post) => post.meta);
   const config = getConfig();

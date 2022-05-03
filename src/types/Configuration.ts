@@ -12,7 +12,8 @@ export type Configuration = {
 export type AppwriteDbConfig = {
     "url": Url | null,
     "projectId": string | null,
-    "postBucketId": string | null
+    "postBucketId": string | null,
+    "apiKey": string | null
 }
 
 export type Color = {

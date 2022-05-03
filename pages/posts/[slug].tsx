@@ -1,4 +1,4 @@
-import { getAllSlugs, getPostBySlug } from "@/api/posts";
+import { getAllSlugs, getLocationFor, getPostBySlug } from "@/api/posts";
 import Footer from "@/components/Footer";
 import Head from "@/components/Head";
 import Main from "@/components/Main";
@@ -20,6 +20,7 @@ import { NextSeo } from "next-seo";
 import styles from "@/styles/Post";
 import getConfig from "@/configuration/configuration";
 import Configuration from "@/types/Configuration";
+import Link from "next/link";
 
 type PostProps = {
     content: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -57,8 +58,21 @@ function Post(props: {post: PostProps, config: Configuration}) {
                     )
                 }
                 <h1 className={styles.title}>{ meta.title }</h1>
-                <h2 className={styles.date}>{ meta.date }</h2>
-                <h2 className={styles.readTime}>{ meta.readTime.humanizedDuration }</h2>
+                <details className={styles.details}>
+                    <summary>More information</summary>
+                    <ul>
+                        <li className={styles.date}>Published at { meta.date }</li>
+                        <li className={styles.author}>Written by { meta.author }</li>
+                        <li className={styles.readTime}>Reading time: { meta.readTime.humanizedDuration }</li>
+                        <li className={styles.tags}>
+                            {
+                                meta.tags.map((tag: string) => (
+                                    <span key={`${meta.storing.slug}-${tag}`}><Link href={`/tags/${tag}`}><a className={styles.tag}>{tag}</a></Link></span>
+                                ))
+                            }
+                        </li>
+                    </ul>
+                </details>
                 <MDXRemote {...content} components={{ ...MdxEmbeds, ...Overrides }} lazy />
             </Main>
             <Footer config={props.config} />
@@ -68,7 +82,7 @@ function Post(props: {post: PostProps, config: Configuration}) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { slug } = params as { slug: string };
-    const { meta, content } = getPostBySlug(slug);
+    const { meta, content } = await getPostBySlug({ slug, location: await getLocationFor(slug) });
 
     const serializedMdx = await serialize(content, {
         mdxOptions: {
@@ -96,9 +110,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const paths: {params: {slug: string}}[] = getAllSlugs()
+    const paths: {params: {slug: string}}[] = (await getAllSlugs())
             .map((slug: string) => ({ params: { slug } }));
-
     return { paths, fallback: false };
 };
 

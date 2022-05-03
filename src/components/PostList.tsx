@@ -13,7 +13,7 @@ function PostList(props: PostListProps) {
       <ul className={styles.list}>
         {
             props.posts.map((post: PostMeta) => (
-                <li key={post.slug} className={styles.listElement}>
+                <li key={post.storing.slug} className={styles.listElement}>
                     {
                         post.image && (
                             <div className={styles.thumnailContainer}>
@@ -21,13 +21,13 @@ function PostList(props: PostListProps) {
                             </div>
                         )
                     }
-                    <Link href={`/posts/${post.slug}`}><a className={styles.title}>{post.title}</a></Link>
+                    <Link href={`/posts/${post.storing.slug}`}><a className={styles.title}>{post.title}</a></Link>
                     <p className={styles.date}>{ post.date }</p>
                     <p className={styles.readTime}>{ post.readTime.humanizedDuration }</p>
                     <p className={styles.tags}>
                         {
                             post.tags.map((tag: string) => (
-                                <span key={`${post.slug}-${tag}`}><Link href={`/tags/${tag}`}><a className={styles.tag}>{tag}</a></Link></span>
+                                <span key={`${post.storing.slug}-${tag}`}><Link href={`/tags/${tag}`}><a className={styles.tag}>{tag}</a></Link></span>
                             ))
                         }
                     </p>

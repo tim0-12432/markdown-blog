@@ -22,7 +22,8 @@ export const defaultConfiguration: Configuration = {
     "appwriteDatabase": {
         "url": null,
         "projectId": null,
-        "postBucketId": null
+        "postBucketId": null,
+        "apiKey": null
     }
 };
 

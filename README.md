@@ -22,7 +22,8 @@ If you are planning to add posts via the [Appwrite Database](https://github.com/
             "port": 3000
         },
         "projectId": "YOUR_PROJECT_ID",
-        "postBucketId": "YOUR_POST_BUCKET_ID"
+        "postBucketId": "YOUR_POST_BUCKET_ID",
+        "apiKey": "YOUR_API_KEY"
     }
 ```
 
@@ -34,6 +35,7 @@ ENV_APPWRITEDATABASE_URL_HOST=localhost
 ENV_APPWRITEDATABASE_URL_PORT=3000
 ENV_APPWRITEDATABASE_PROJECTID=YOUR_PROJECT_ID
 ENV_APPWRITEDATABASE_POSTBUCKETID=YOUR_POST_BUCKET_ID
+ENV_APPWRITEDATABASE_APIKEY=YOUR_API_KEY
 ```
 
 All [Configuration keys](src/types/Configuration.ts):
@@ -47,6 +49,9 @@ All [Configuration keys](src/types/Configuration.ts):
 |**appwriteDatabase**|url|`{ "host": string, "port": string\|number }`|Connection url of the appwrite database|
 ||projectId|`string`|Id for identifying the correct project|
 ||postBucketId|`string`|Id of bucket where blog files should be stored|
+||apiKey|`string`|Api key for accessing the appwrite database. **!Make sure it's permitted to only read files!** |
+
+When changing the configuration, you need to restart the server.
 
 ### Docker
 

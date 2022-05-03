@@ -2,16 +2,16 @@ import getConfig, { getConfigByKey } from "@/configuration/configuration";
 import { AppwriteDbConfig } from "@/types/Configuration";
 import { Client, Storage } from "node-appwrite";
 
-function initAppwrite(): Client | undefined {
+function initAppwrite(): Client | null {
     const config: AppwriteDbConfig = getConfigByKey("appwriteDatabase");
-    console.log("Configuration: ", getConfig());
-    console.log("Appwrite: ", isAppwriteConfigured());
     if (isAppwriteConfigured()) {
         const client: Client = new Client();
         client.setEndpoint(`${config!.url!.host}:${config!.url!.port}/v1`);
         client.setProject(config!.projectId!);
+        client.setKey(config!.apiKey!);
         return client;
     }
+    return null;
 }
 
 function isAppwriteConfigured(): boolean {
@@ -23,34 +23,30 @@ function isAppwriteConfigured(): boolean {
             && config.projectId !== null
             && config.projectId !== ""
             && config.postBucketId !== null
-            && config.postBucketId !== "";
+            && config.postBucketId !== ""
+            && config.apiKey !== null
+            && config.apiKey !== "";
 }
 
-export function getAppwritePostSlugs(): string[] {
-    const client: Client | undefined = initAppwrite();
-    if (client && getConfigByKey("appwriteDatabase").postBucketId !== null) {
+export async function getAppwritePostSlugs(): Promise<string[]> {
+    const client: Client | null = initAppwrite();
+    const config: AppwriteDbConfig = getConfigByKey("appwriteDatabase");
+    if (client && config.postBucketId !== null) {
         const storage: Storage = new Storage(client);
-        const fetch = async () => {
-            const bucket = await storage.getBucket(getConfigByKey("appwriteDatabase").postBucketId!);
 
-            const files = (await storage.listFiles(bucket.name)).files;
-            console.log(files);
-            return files.map((file) => file.$id);
-        };
-        fetch().then((slugs: string[]) => slugs);
+        const files = (await storage.listFiles(config.postBucketId!)).files;
+        return files.map((file) => file.$id);
     }
     return [];
 }
 
-export function getAppwritePostBySlug(file: string): string {
-    const client: Client | undefined = initAppwrite();
-    if (client && getConfigByKey("appwriteDatabase").postBucketId !== null) {
+export async function getAppwritePostBySlug(file: string): Promise<string> {
+    const client: Client | null = initAppwrite();
+    const config: AppwriteDbConfig = getConfigByKey("appwriteDatabase");
+    if (client && config.postBucketId !== null) {
         const storage: Storage = new Storage(client);
-        const fetch = async () => {
-            const fileDoc = await storage.getFileView(getConfigByKey("appwriteDatabase").postBucketId!, file);
-            return fileDoc.toString("utf-8");
-        };
-        fetch().then((content: string) => content);
+        const fileDoc = await storage.getFileView(config.postBucketId!, file);
+        return fileDoc.toString("utf-8");
     }
     return "";
 }

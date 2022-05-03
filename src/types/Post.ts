@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export type Post = {
     content: string;
     meta: PostMeta;
@@ -11,7 +13,7 @@ export type ReadTime = {
 }
 
 export type PostMeta = {
-    slug: string;
+    storing: StoringInformation;
     title: string;
     date: string;
     author: string;
@@ -19,5 +21,12 @@ export type PostMeta = {
     image: string | null;
     readTime: ReadTime;
 }
+
+export type StoringInformation = {
+    slug: string;
+    location: StorageLocation;
+}
+
+export type StorageLocation = "local" | "appwrite";
 
 export default Post;

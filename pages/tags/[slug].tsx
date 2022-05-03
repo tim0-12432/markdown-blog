@@ -35,7 +35,7 @@ function Tag(props: TagProps) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { slug } = params as { slug: string };
-    const posts: Post[] = getAllPosts().filter((post: Post) => post.meta.tags.includes(slug));
+    const posts: Post[] = (await getAllPosts()).filter((post: Post) => post.meta.tags.includes(slug));
 
     const config = getConfig();
     return {
@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const posts: Post[] = getAllPosts();
+    const posts: Post[] = await getAllPosts();
     const tags: Set<string> = new Set(
         posts.map((post: Post) => post.meta.tags).flat()
     );

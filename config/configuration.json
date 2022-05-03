@@ -1,10 +1,11 @@
 {
     "appwriteDatabase": {
         "url": {
-            "host": "localhost",
+            "host": "http://localhost",
             "port": 4002
         },
         "postBucketId": "",
-        "projectId": ""
+        "projectId": "",
+        "apiKey": ""
     }
 }

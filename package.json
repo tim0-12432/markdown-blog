@@ -2,6 +2,13 @@
   "name": "markdown-blog",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tim0-12432/markdown-blog"
+  },
+  "author": {
+    "name": "Tim0-12432"
+  },
   "scripts": {
     "dev": "react-env --prefix ENV -- next",
     "build": "next build",
@@ -39,5 +46,6 @@
     "sass": "1.50.0",
     "tailwindcss": "3.0.24",
     "typescript": "4.6.3"
-  }
+  },
+  "license": "MIT"
 }

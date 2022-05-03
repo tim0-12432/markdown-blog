@@ -4,10 +4,45 @@ export const styles: Styles = {
     "title": `font-bold
         text-[color:var(--color-font)]
         text-4xl`,
+    "details": `text-[color:var(--color-font)]
+        text-md
+        font-light
+        mt-4`,
     "date": `text-[color:var(--color-font)]
-        text-md`,
+        text-md
+        font-normal
+        mt-2
+        pl-4`,
     "readTime": `text-[color:var(--color-font)]
-        text-md`,
+        text-md
+        font-normal
+        pl-4`,
+    "author": `text-[color:var(--color-font)]
+        text-md
+        font-normal
+        pl-4`,
+    "tags": `flex
+        flex-wrap
+        row-start-4
+        col-start-1
+        col-span-2
+        row-span-1
+        mx-2
+        pl-2
+        my-3`,
+    "tag": `px-2
+        py-1
+        mr-2
+        text-xs
+        text-[color:var(--color-font)]
+        hover:text-[color:var(--color-accent)]
+        border
+        border-[color:var(--color-font)]
+        bg-[color:var(--color-secondary)]
+        box-shadow-md
+        hover:box-shadow-xl
+        rounded-md
+        font-normal`,
     "h1": `font-bold
         mt-4
         mb-1
