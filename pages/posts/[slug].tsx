@@ -18,7 +18,7 @@ import "highlight.js/styles/github-dark-dimmed.css";
 import Header from "@/components/Header";
 import { NextSeo } from "next-seo";
 import styles from "@/styles/Post";
-import getConfig, { getConfigByKey } from "@/configuration/configuration";
+import getConfig from "@/configuration/configuration";
 import Configuration from "@/types/Configuration";
 
 type PostProps = {
