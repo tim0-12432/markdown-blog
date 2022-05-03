@@ -1,0 +1,12 @@
+{
+    "output": "csv",
+    "delimiter": "|",
+    "fields": [
+        "licenseType",
+        "name",
+        "installedVersion",
+        "remoteVersion",
+        "author",
+        "link"
+    ]
+}
