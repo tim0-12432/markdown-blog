@@ -5,7 +5,7 @@ import PostList from "@/components/PostList";
 import Main from "@/components/Main";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import getConfig, { getDefaultConfig } from "@/configuration/configuration";
+import getConfig from "@/configuration/configuration";
 import Configuration from "@/types/Configuration";
 import { GetServerSideProps } from "next";
 
