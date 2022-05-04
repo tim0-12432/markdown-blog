@@ -49,7 +49,7 @@ All [Configuration keys](src/types/Configuration.ts):
 |**appwriteDatabase**|url|`{ "host": string, "port": string\|number }`|Connection url of the appwrite database|
 ||projectId|`string`|Id for identifying the correct project|
 ||postBucketId|`string`|Id of bucket where blog files should be stored|
-||apiKey|`string`|Api key for accessing the appwrite database. **!Make sure it's permitted to only read files!** |
+||apiKey|`string`|Api key for accessing the appwrite database. **!Make sure only reading files is permitted!** |
 
 When changing the configuration, you need to restart the server.
 
@@ -61,6 +61,9 @@ When changing the configuration, you need to restart the server.
   - [`public/images`](public/images/): when wanting to add images
 - **Ports**:
   - `3000`: for displaying NextJS frontend
+
+1. `docker pull ghcr.io/tim0-12432/markdown-blog:latest`
+2. `docker run --name markdown-blog -d -p 8082:3000 -v markdown-blog_config:/config -v markdown-blog_posts:/posts -v markdown-blog_images:/public/images -e <ENVIRONMENT_VARIABLES> ghcr.io/tim0-12432/markdown-blog:latest`
 
 ### NodeJS
 

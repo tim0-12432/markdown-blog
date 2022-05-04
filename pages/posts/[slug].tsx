@@ -2,7 +2,7 @@ import { getAllSlugs, getLocationFor, getPostBySlug } from "@/api/posts";
 import Footer from "@/components/Footer";
 import Head from "@/components/Head";
 import Main from "@/components/Main";
-import type { GetStaticPaths, GetStaticProps } from "next";
+import type { GetServerSideProps } from "next";
 import React from "react";
 import Image from "next/image";
 import { serialize } from "next-mdx-remote/serialize";
@@ -80,8 +80,17 @@ function Post(props: {post: PostProps, config: Configuration}) {
     );
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     const { slug } = params as { slug: string };
+    const config: Configuration = getConfig();
+    const paths: string[] = await getAllSlugs();
+
+    if (!paths.includes(slug)) {
+        return {
+            notFound: true
+        };
+    }
+
     const { meta, content } = await getPostBySlug({ slug, location: await getLocationFor(slug) });
 
     const serializedMdx = await serialize(content, {
@@ -96,7 +105,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }
     });
 
-    const config = getConfig();
 
     return {
         props: {
@@ -107,12 +115,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             config
         }
     };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-    const paths: {params: {slug: string}}[] = (await getAllSlugs())
-            .map((slug: string) => ({ params: { slug } }));
-    return { paths, fallback: false };
 };
 
 export default Post;

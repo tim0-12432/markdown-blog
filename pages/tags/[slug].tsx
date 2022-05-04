@@ -4,10 +4,10 @@ import Head from "@/components/Head";
 import Header from "@/components/Header";
 import Main from "@/components/Main";
 import PostList from "@/components/PostList";
-import getConfig, { getConfigByKey } from "@/configuration/configuration";
+import getConfig from "@/configuration/configuration";
 import Configuration from "@/types/Configuration";
 import Post, { PostMeta } from "@/types/Post";
-import type { GetStaticPaths, GetStaticProps } from "next";
+import type { GetServerSideProps } from "next";
 import React from "react";
 
 type TagProps = {
@@ -33,11 +33,19 @@ function Tag(props: TagProps) {
     );
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     const { slug } = params as { slug: string };
     const posts: Post[] = (await getAllPosts()).filter((post: Post) => post.meta.tags.includes(slug));
+    const tags: string[] = Array.from(new Set(posts.map((post: Post) => post.meta.tags).flat()));
 
-    const config = getConfig();
+    const config: Configuration = getConfig();
+
+    if (!tags.includes(slug)) {
+        return {
+            notFound: true
+        };
+    }
+
     return {
         props: {
             slug,
@@ -45,17 +53,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             config
         }
     };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-    const posts: Post[] = await getAllPosts();
-    const tags: Set<string> = new Set(
-        posts.map((post: Post) => post.meta.tags).flat()
-    );
-    const paths: {params: {slug: string}}[] = Array.from(tags)
-            .map((tag: string) => ({ params: { slug: tag } }));
-
-    return { paths, fallback: false };
 };
 
 export default Tag;

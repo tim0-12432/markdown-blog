@@ -34,8 +34,13 @@ export async function getAppwritePostSlugs(): Promise<string[]> {
     if (client && config.postBucketId !== null) {
         const storage: Storage = new Storage(client);
 
-        const files = (await storage.listFiles(config.postBucketId!)).files;
-        return files.map((file) => file.$id);
+        try {
+            const files = (await storage.listFiles(config.postBucketId!)).files;
+            return files.map((file) => file.$id);
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
     }
     return [];
 }

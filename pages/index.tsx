@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import getConfig, { getDefaultConfig } from "@/configuration/configuration";
 import Configuration from "@/types/Configuration";
+import { GetServerSideProps } from "next";
 
 type HomeProps = {
   postsMeta: PostMeta[];
@@ -27,12 +28,12 @@ export const Home = (props: HomeProps): JSX.Element => {
   );
 };
 
-export async function getStaticProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const postsMeta: PostMeta[] = (await getAllPosts())
       .slice(0, 9)
       .map((post: Post) => post.meta);
   const config = getConfig();
   return { props: { postsMeta, config } };
-}
+};
 
 export default Home;

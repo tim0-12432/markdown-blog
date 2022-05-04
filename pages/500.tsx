@@ -5,12 +5,14 @@ import React from "react";
 import getConfig from "@/configuration/configuration";
 import Configuration from "@/types/Configuration";
 import styles from "@/styles/Error";
+import Header from "@/components/Header";
 
 function Custom500(props: { config: Configuration }) {
   const { config } = props;
   return (
     <>
         <Head title={`500 - ${config.blogName}`} />
+        <Header config={config} />
         <Main>
             <h1 className={styles.headline}>500</h1>
             <h2 className={styles.caption}>Internal Server Error!</h2>
