@@ -14,9 +14,12 @@ export const styles: Styles = {
         gap-0
         grid-rows-4`,
     "thumbnail": `object-cover
+        bg-cover
+        bg-no-repeat
+        bg-center
         h-full
         w-full
-        rounded-lg`,
+        rounded-r-lg`,
     "thumnailContainer": `col-start-3
         col-span-1
         row-start-1

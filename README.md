@@ -1,14 +1,24 @@
 # Markdown Blog
 
+![Cover image for this repo](/doc/images/cover.png)
+
+[![GitHub](https://img.shields.io/github/license/tim0-12432/markdown-blog?color=blue&label=License&logo=github&style=flat)](/LICENSE.md)
+[![Docker Image CI](https://github.com/tim0-12432/markdown-blog/actions/workflows/docker-image.yml/badge.svg)](https://github.com/tim0-12432/markdown-blog/actions/workflows/docker-image.yml)
+[![Release CI](https://github.com/tim0-12432/markdown-blog/actions/workflows/release.yml/badge.svg)](https://github.com/tim0-12432/markdown-blog/actions/workflows/release.yml)
+
 ## Motivation
 
+I wanted to learn NextJS for a few months. Now the time have come and I created a server for displaying markdown blog posts. So this is my first project using NextJS.
 
+When noticing the new appwrite hackathon, I decided to add a feature to store your markdown post files in a appwrite database.
 
 ## Installation and usage
 
 ### Prerequisites
 
 If you are planning to add posts via the [Appwrite Database](https://github.com/appwrite/appwrite) capability, you need to have a [Appwrite instance](https://github.com/appwrite/appwrite) running on your local machine or on a server.
+
+> Files should be stored in a bucket in the storage and their ids must match the file name in order to be found!
 
 ### Configuration
 
@@ -80,6 +90,23 @@ graph TD
     P[(Posts Directory)] --> N
     N --> F[NextJS Frontend]
 ```
+
+## Screenshots
+
+### Comparison: light vs. dark mode
+
+|device|light|dark|
+|---:|:---:|:---:|
+|desktop|![homescreen on desktop in light mode](doc/images/localhost_3000_(desktop)_light.png)|![homescreen on desktop in dark mode](doc/images/localhost_3000_(desktop)_dark.png)|
+|mobile|![homescreen on mobile in light mode](doc/images/localhost_3000_(mobile)_light.png)|![homescreen on mobile in dark mode](doc/images/localhost_3000_(mobile)_dark.png)|
+
+> All colors are [configurable](#configuration)!
+
+### Testpost on mobile and desktop
+
+|mobile|desktop|
+|:---:|:---:|
+|![testpost on mobile](doc/images/localhost_3000_markdown_(mobile)_dark.png)|![testpost on desktop](doc/images/localhost_3000_markdown_(desktop)_dark.png)|
 
 ## License
 

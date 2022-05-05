@@ -4,7 +4,6 @@ import Head from "@/components/Head";
 import Main from "@/components/Main";
 import type { GetServerSideProps } from "next";
 import React from "react";
-import Image from "next/image";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { PostMeta } from "@/types/Post";
@@ -54,7 +53,7 @@ function Post(props: {post: PostProps, config: Configuration}) {
             <Main>
                 {
                     meta.image && (
-                        <Image priority src={meta.image} width={200} height={200} alt={`Thumbnail ${meta.title}`} />
+                        <div className={styles.cover} style={{ backgroundImage: `url(${meta.image})` }} />
                     )
                 }
                 <h1 className={styles.title}>{ meta.title }</h1>

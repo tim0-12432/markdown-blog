@@ -17,7 +17,7 @@ function PostList(props: PostListProps) {
                     {
                         post.image && (
                             <div className={styles.thumnailContainer}>
-                                <Image priority className={styles.thumbnail} src={post.image} width={200} height={200} alt={`Thumbnail ${post.title}`} />
+                                <div className={styles.thumbnail} style={{ backgroundImage: `url(${post.image})` }} />
                             </div>
                         )
                     }

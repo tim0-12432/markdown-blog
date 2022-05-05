@@ -1,6 +1,15 @@
 import Styles from "@/types/Styles";
 
 export const styles: Styles = {
+    "cover": `object-cover
+        bg-cover
+        bg-no-repeat
+        bg-center
+        h-80
+        w-full
+        rounded-lg
+        drop-shadow-lg
+        mb-4`,
     "title": `font-bold
         text-[color:var(--color-font)]
         text-4xl`,
